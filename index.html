@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rivera, Cedric - Portfolio</title>
 
   <!-- Favicon -->
@@ -702,6 +702,28 @@
             color: #4961e1;
         }
 
+        @media (max-width: 768px) {
+          /* Kill zoom-causing animations */
+          [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+          }
+        
+          /* Remove typewriter animation on mobile */
+          .hero .tagline {
+            animation: none !important;
+            white-space: normal !important; /* allow wrapping */
+            border-right: none !important; /* remove cursor */
+          }
+        
+          /* Prevent image zoom shaking */
+          .contact-photo img,
+          .about-photo img {
+            transform: none !important;
+            transition: none !important;
+          }
+        }
 
     </style>
 </head>
@@ -1067,6 +1089,7 @@
         AOS.init({
             once: true,
             duration: 800,
+            disable: 'mobile' // turn off AOS on phones
         });
 
         // Initialize Swiper for Affiliations
@@ -1302,5 +1325,6 @@
     </footer>
 </body>
 </html>
+
 
 
