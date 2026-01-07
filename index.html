@@ -1,568 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rivera, Cedric - Portfolio</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #e0e0e0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background-color: #060a16;
+}
+:root {
+    --primary-blue-1: #4169E1;
+    --primary-blue-2: #3b5fcb;
+    --primary-blue-dark: #1a2a5a;
+    --accent-red: #B22222;
+    --white: #fff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-highlight: #87CEFA;
+}
 
-    <link rel="icon" type="image/png" href="Logo.png">
+/* Background Gradients */
+.gradient-bg { background: linear-gradient(135deg, #0d152d, #1c2b50); transition: background 0.5s ease; }
+.section-bg-light { background: linear-gradient(135deg, #152040, #1e2d58); transition: background 0.5s ease; }
+.section-bg-dark { background: linear-gradient(135deg, #080c1b, #0d152d); transition: background 0.5s ease; }
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+section { padding: 5rem 2rem; }
+section h2 {
+    text-align: center; font-size: 2.8rem; margin-bottom: 4rem; color: var(--white);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="#about">
-                    <img src="Logo.png" alt="Cedric Rivera Logo">
-                </a>
-            </div>
-            <ul>
-                <li><a href="#about" class="active">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#affiliations">Affiliations</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+/* Header & Nav */
+header {
+    position: fixed; top: 0; width: 100%; background: rgba(6, 10, 22, 0.9);
+    backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.4); z-index: 1000; padding: 1.2rem 0;
+}
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav a {
+    text-decoration: none; color: var(--white); font-weight: 500; font-size: 0.95rem;
+    transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
+}
+nav a:hover, nav a.active { color: var(--accent-red); }
+.logo img { height: 50px; width: auto; display: block; }
 
-    <section id="about" class="gradient-bg">
-        <div class="about-container">
-            <div class="hero" data-aos="fade-up">
-                <h1>
-                    <span class="blue-letter">C</span>edric 
-                    <span class="blue-letter">E</span>lecho 
-                    <span class="blue-letter">R</span>ivera
-                </h1>
+/* Hero */
+#about { color: var(--white); position: relative; overflow: hidden; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+.about-container { display: flex; align-items: center; justify-content: space-between; gap: 4rem; max-width: 1300px; margin: 0 auto; padding-bottom: 4rem; }
+.hero { flex: 1; text-align: left; }
+.hero h1 { font-size: 4.5rem; margin-bottom: 1rem; line-height: 1.1; }
+.blue-letter { color: var(--text-highlight); }
 
-                <div class="tagline-wrapper">
-                    <div class="tagline">
-                        IT Student | Supreme Student Council | SK Chairman 
-                    </div>
-                </div>
+/* --- NEW COLLAGE GALLERY STYLES --- */
+.photo-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 400px;
+}
+.main-display img {
+    width: 100%;
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease-in-out;
+}
+.thumb-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+.collage-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+.collage-thumb:hover, .active-thumb {
+    opacity: 1;
+    transform: scale(1.1);
+    border-color: var(--accent-red);
+}
 
-                <div class="cta-buttons">
-                    <button class="cta-btn" onclick="downloadCV()">Download CV</button>
-                    <button class="cta-btn" onclick="scrollToContact()">Contact Me</button>
-                </div>
-            </div>
+/* Typing Effect */
+.tagline-wrapper { margin-bottom: 2.5rem; }
+.tagline {
+    display: inline-block;
+    font-size: 1.2rem; 
+    color: #ccc;
+    font-weight: 300; 
+    letter-spacing: 1px;
+    border-right: 3px solid var(--accent-red);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3.5s steps(50, end) forwards, blink-caret .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-red); } }
 
-            <div class="about-photo">
-                <div class="photo-gallery">
-                    <div class="main-display">
-                        <img src="Rivera_WithLaptop.png" id="mainImage" alt="Cedric Rivera">
-                    </div>
-                    
-                    <div class="thumb-grid">
-                        <img src="Rivera_barong.jpg" class="collage-thumb" onclick="manualSelect(0)" alt="Barong">
-                        <img src="Rivera_creative.jpg" class="collage-thumb" onclick="manualSelect(1)" alt="Creative">
-                        <img src="Rivera_formal.jpg" class="collage-thumb" onclick="manualSelect(2)" alt="Formal">
-                        <img src="Rivera_unif.jpg" class="collage-thumb" onclick="manualSelect(3)" alt="Uniform">
-                        <img src="Rivera_WithLaptop.png" class="collage-thumb active-thumb" onclick="manualSelect(4)" alt="Laptop">
-                    </div>
-                </div>
-            </div>
-        </div>
+.cta-buttons { display: flex; gap: 1.5rem; margin-bottom: 3rem; }
+.cta-btn {
+    padding: 1rem 2.5rem; background: var(--accent-red); color: var(--white); border: none;
+    border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(178, 34, 34, 0.3); }
 
-        <div class="highlights">
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="highlight-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>Education</h3>
-                <p>BSIT at Pamantasan ng Lungsod ng Maynila (GWA: 1.42)</p>
-            </div>
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
-                <h3>Achievements</h3>
-                <p>Hackathon Finalist, Top 3 Concentrix Hire, SK Chairman</p>
-            </div>
-            <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="highlight-icon"><i class="fas fa-code"></i></div>
-                <h3>Skills</h3>
-                <p>Python, Java, C, C++, HTML/CSS, Oracle, Adobe Suite</p>
-            </div>
-        </div>
-    </section>
+/* Highlights */
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+.highlight-card {
+    background: var(--glass-bg); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px); transition: all 0.3s ease; color: white; text-align: center;
+}
+.highlight-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); border-color: var(--primary-blue-1); }
+.highlight-icon { font-size: 2.5rem; color: var(--text-highlight); margin-bottom: 1rem; }
+.highlight-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+.highlight-card p { font-size: 0.9rem; color: #ccc; }
 
-    <section id="education" class="section-bg-light">
-        <h2 data-aos="fade-up">Education</h2>
-        <div class="edu-container">
-            
-            <div class="glass-card" data-aos="fade-right">
-                <div class="card-icon"><i class="fas fa-university"></i></div>
-                <div class="card-content">
-                    <span class="year-badge">2022 – Present</span>
-                    <h3>Pamantasan ng Lungsod ng Maynila</h3>
-                    <p class="role">Bachelor of Science in Information Technology</p>
-                    <p class="detail highlight-text">GWA: 1.42</p>
-                </div>
-            </div>
+/* Education & Experience Cards */
+.edu-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+.glass-card {
+    display: flex; align-items: flex-start; gap: 2rem;
+    background: var(--glass-bg); padding: 2.5rem; border-radius: 20px;
+    border: 1px solid var(--glass-border); transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.glass-card:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); border-color: var(--accent-red); }
+.glass-card::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: var(--accent-red); }
+.card-icon { font-size: 2.5rem; color: var(--text-highlight); min-width: 60px; text-align: center; margin-top: 5px; }
+.card-content { flex: 1; }
+.card-content h3 { font-size: 1.5rem; margin-bottom: 0.2rem; color: var(--white); }
+.year-badge { display: inline-block; font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; color: #ddd; }
+.role { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-highlight); }
+.detail { font-size: 0.95rem; color: #ccc; }
+.highlight-text { font-style: italic; color: var(--accent-red); }
 
-            <div class="glass-card" data-aos="fade-left">
-                <div class="card-icon"><i class="fas fa-school"></i></div>
-                <div class="card-content">
-                    <span class="year-badge">2020 – 2022</span>
-                    <h3>AMA – ACLC College of Manila</h3>
-                    <p class="role">Techno-Vocational-Livelihood ICT Strand</p>
-                    <p class="detail highlight-text">With Highest Honors</p>
-                </div>
-            </div>
+/* Affiliations */
+.affiliation-slide { text-align: center; padding: 1rem; cursor: pointer; }
+.affiliation-card {
+    background: var(--glass-bg); padding: 3rem 2rem; border-radius: 20px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.affiliation-card:hover { transform: scale(1.05); background: rgba(255,255,255,0.1); border-color: var(--primary-blue-1); }
+.affiliation-card i { font-size: 3.5rem; color: var(--accent-red); margin-bottom: 1.5rem; }
+.affiliation-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.affiliation-card p { font-size: 0.9rem; color: #aaa; }
 
-        </div>
-    </section>
+/* Certifications */
+.cert-split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; }
+.col-title {
+    text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: var(--text-highlight);
+    border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; letter-spacing: 1px;
+}
+.cert-column { display: flex; flex-direction: column; gap: 1.5rem; }
+.filters { text-align: center; margin-bottom: 3rem; }
+.filter-btn {
+    background: transparent; color: var(--white); border: 1px solid var(--glass-border); padding: 0.6rem 1.2rem;
+    margin: 5px; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;
+}
+.filter-btn.active, .filter-btn:hover { background: var(--accent-red); border-color: var(--accent-red); transform: translateY(-2px); }
+.training-item {
+    position: relative; overflow: hidden; z-index: 1;
+    background: var(--glass-bg); padding: 1.8rem; border-radius: 15px; cursor: pointer;
+    border: 1px solid var(--glass-border); transition: all 0.3s ease;
+}
+.training-item::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    opacity: 0.12; z-index: -1; background-image: var(--bg-img);
+    filter: grayscale(100%); transition: transform 0.5s ease;
+}
+.training-item:hover { transform: translateY(-5px); border-color: var(--text-highlight); }
+.training-item:hover::before { transform: scale(1.1); opacity: 0.2; }
+.training-item h4 { font-size: 1.1rem; margin-bottom: 0.3rem; line-height: 1.3; }
+.training-item p { font-size: 0.9rem; color: #aaa; }
+.cert-badge {
+    display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.badge-local { background-color: rgba(65, 105, 225, 0.2); color: var(--text-highlight); border: 1px solid var(--text-highlight); }
+.badge-int { background-color: rgba(178, 34, 34, 0.2); color: #ff6b6b; border: 1px solid #ff6b6b; }
+.cert-year { display: block; font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; text-align: right; }
+.training-item.hidden { display: none !important; }
 
-    <section id="experience" class="section-bg-dark">
-        <h2 data-aos="fade-up">Professional Experience</h2>
-        <div class="edu-container">
-            
-            <div class="glass-card" data-aos="fade-up">
-                <div class="card-icon"><i class="fas fa-headset"></i></div>
-                <div class="card-content">
-                    <span class="year-badge">Jul 2024 – Nov 2024</span>
-                    <h3>Concentrix MOA</h3>
-                    <p class="role">Customer Service Representative (Technical Support)</p>
-                    <p class="detail">Delivered exceptional client assistance and resolved complex technical issues. Recognized as Top 3 among new hires.</p>
-                </div>
-            </div>
+/* Search Bar */
+.search-wrapper { max-width: 600px; margin: 0 auto 3rem auto; position: relative; z-index: 100; }
+.search-container input {
+    width: 100%; padding: 15px 25px; border-radius: 50px; 
+    background: rgba(255, 255, 255, 0.08); color: white; font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2); outline: none; transition: all 0.3s ease;
+}
+.search-container input:focus {
+    background: rgba(255, 255, 255, 0.15); border-color: var(--accent-red);
+    box-shadow: 0 0 20px rgba(178, 34, 34, 0.3);
+}
+.suggestions-list {
+    position: absolute; top: 110%; left: 0; width: 100%;
+    background: #0d152d; border-radius: 15px; list-style: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: none;
+    max-height: 250px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.1);
+}
+.suggestions-list.show { display: block; }
+.suggestions-list li { padding: 12px 20px; cursor: pointer; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s; }
+.suggestions-list li:hover { background: var(--accent-red); color: white; }
 
-            <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
-                <div class="card-content">
-                    <span class="year-badge">Nov 2021 – Dec 2021</span>
-                    <h3>AMA Computer College of Manila</h3>
-                    <p class="role">Bookkeeping OJT</p>
-                    <p class="detail">Assisted in meticulous record-keeping, data entry, and administrative documentation management.</p>
-                </div>
-            </div>
+/* Contact Section */
+#contact { color: var(--white); text-align: center; }
+.contact-professional { max-width: 1000px; margin: 0 auto; }
+.contact-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; justify-items: center; }
+.contact-card-pro {
+    background: var(--glass-bg); padding: 2.5rem 1.5rem; border-radius: 20px; border: 1px solid var(--glass-border);
+    width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: all 0.3s ease; cursor: pointer; text-decoration: none;
+}
+.contact-card-pro:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); border-color: var(--text-highlight); }
+.contact-card-pro i { font-size: 2.5rem; color: var(--accent-red); margin-bottom: 1rem; transition: transform 0.3s; }
+.contact-card-pro:hover i { transform: scale(1.2); }
+.contact-card-pro h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--white); }
+.contact-card-pro p, .contact-card-pro span { color: #ccc; font-size: 0.95rem; text-align: center; }
+.contact-card-pro small { margin-top: 0.5rem; color: var(--text-highlight); font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; }
+.contact-card-pro:hover small { opacity: 1; }
+.full-width { grid-column: 1 / -1; max-width: 600px; }
 
-        </div>
-    </section>
+/* Footer */
+footer {
+    position: fixed; bottom: 0; width: 100%; background: rgba(6, 10, 22, 0.95);
+    backdrop-filter: blur(5px); z-index: 1000; padding: 0.8rem 0; text-align: center; color: #888; border-top: 1px solid rgba(255,255,255,0.05);
+}
 
-    <section id="affiliations" class="section-bg-light">
-        <h2 data-aos="fade-up">Affiliations & Leadership</h2>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide affiliation-slide" onclick="openModal('Google Developer Student Club (2022–2025) – External Community Committee.')">
-                    <div class="affiliation-card">
-                        <i class="fab fa-google"></i>
-                        <h3>Google Developer Student Club</h3>
-                        <p>External Community Committee</p>
-                    </div>
-                </div>
-                <div class="swiper-slide affiliation-slide" onclick="openModal('PLM Supreme Student Council (2024–2025) – College Representative, Chairperson for Social Media & Marketing.')">
-                    <div class="affiliation-card">
-                        <i class="fas fa-users"></i>
-                        <h3>PLM Supreme Student Council</h3>
-                        <p>College Representative</p>
-                    </div>
-                </div>
-                <div class="swiper-slide affiliation-slide" onclick="openModal('SK Chairman, Barangay 166 (2023–Present) – Led SK projects, focused on youth development.')">
-                    <div class="affiliation-card">
-                        <i class="fas fa-handshake"></i>
-                        <h3>SK Chairman</h3>
-                        <p>Barangay 166</p>
-                    </div>
-                </div>
-                <div class="swiper-slide affiliation-slide" onclick="openModal('Akbayan Partylist NCR Coordinator (2022–2023).')">
-                    <div class="affiliation-card">
-                        <i class="fas fa-balance-scale"></i>
-                        <h3>Akbayan Partylist NCR</h3>
-                        <p>Coordinator</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+/* Modals */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px);
+}
+.modal-content {
+    background: #1a2a5a; padding: 2.5rem; border-radius: 20px; width: 90%; max-width: 600px; color: var(--white); position: relative; border: 1px solid var(--glass-border);
+}
+.image-modal-content { max-width: 800px; background: transparent; padding: 0; border: none; }
+.close, .close-image {
+    position: absolute; top: 15px; right: 20px; color: #aaa; font-size: 30px; font-weight: bold; cursor: pointer; transition: color 0.3s;
+}
+.close:hover, .close-image:hover { color: var(--accent-red); }
+.close-image { right: 0; top: -40px; color: white; }
 
-    <section id="certifications" class="section-bg-dark">
-        <h2 data-aos="fade-up">Certifications</h2>
-        
-        <div class="search-wrapper" data-aos="fade-up">
-            <div class="search-container">
-                <input type="text" id="certSearch" placeholder="Search certifications..." autocomplete="off">
-                <ul id="suggestionsList" class="suggestions-list"></ul>
-            </div>
-        </div>
-
-        <div class="filters" data-aos="fade-up">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
-            <button class="filter-btn" data-filter="ai-ml">AI & ML</button>
-            <button class="filter-btn" data-filter="cloud-iot">Cloud & IoT</button>
-            <button class="filter-btn" data-filter="programming">Programming</button>
-            <button class="filter-btn" data-filter="digital-edtech">Digital & EdTech</button>
-            <button class="filter-btn" data-filter="research-career">Research</button>
-        </div>
-
-        <div class="cert-split-layout">
-            
-            <div class="cert-column local-col">
-                <h3 class="col-title">Local Certifications</h3>
-                
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/L9.png')" onclick="openModalImage('certificates/L9.png', 'Turn Splunk Into Your Smartest SOC Analyst (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Turn Splunk Into Your Smartest SOC Analyst</h4>
-                    <p>Hurricane Labs</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/L8.png')" onclick="openModalImage('certificates/L8.png', 'Cybersecurity Program & Hiring Landscape (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Cybersecurity Program & Hiring Landscape</h4>
-                    <p>Simplilearn</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/L7.png')" onclick="openModalImage('certificates/L7.png', 'AI in the Field of Education (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>AI in the Field of Education</h4>
-                    <p>Go Study Global Education</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/L2.png')" onclick="openModalImage('certificates/L2.png', 'Intro to Transformer-Based NLP (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Intro to Transformer-Based NLP</h4>
-                    <p>NVIDIA</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/L3.png')" onclick="openModalImage('certificates/L3.png', 'Introduction to AI Concepts (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Introduction to AI Concepts</h4>
-                    <p>Microsoft</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/L4.png')" onclick="openModalImage('certificates/L4.png', 'AI for Oceans: Hour of Code (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>AI for Oceans: Hour of Code</h4>
-                    <p>Code.org</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/L6.png')" onclick="openModalImage('certificates/L6.png', 'Amazon API Gateway for Serverless Applications (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Amazon API Gateway for Serverless Apps</h4>
-                    <p>AWS</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/L5.png')" onclick="openModalImage('certificates/L5.png', 'Introduction to IoT and Digital Transformation (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Introduction to IoT and Digital Transformation</h4>
-                    <p>Cisco Networking Academy</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/L10.png')" onclick="openModalImage('certificates/L10.png', 'C Programming Language (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>C Programming Language</h4>
-                    <p>TOPS Technologies</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/L1.png')" onclick="openModalImage('certificates/L1.png', 'Manila International Research Conference (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Manila International Research Conference</h4>
-                    <p>PLM</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Manila International Research Conference (Day 2) (2025)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Manila International Research Conference (Day 2)</h4>
-                    <p>PLM</p>
-                    <span class="cert-year">2025</span>
-                </div>
-
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'SecurITy Check: Network Firewall Security (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>SecurITy Check: Network Firewall Security</h4>
-                    <p>PLM SITE</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'DevFest Cloud Manila (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>DevFest Cloud Manila</h4>
-                    <p>Google Developers Group</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'AWS Community Day Philippines (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>AWS Community Day Philippines</h4>
-                    <p>Packetworx</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Deploy your website in the cloud GCP (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Deploy your website in the cloud GCP</h4>
-                    <p>GDSC</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'ECE - Peasy! Software Competency (Arduino) (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>ECE - Peasy! Software Competency</h4>
-                    <p>ECE PLM</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Now UI see me (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Now UI see me</h4>
-                    <p>GDSC</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Introductory in Mobile App Development (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Introductory in Mobile App Development</h4>
-                    <p>GDSC</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'How to Make Lumpia, An HTML Masterclass (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>HTML Masterclass</h4>
-                    <p>GDSC</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Philippine eJournals Training (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Philippine eJournals Training</h4>
-                    <p>Ce- Logic Inc</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Technology in Business Operations (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Technology in Business Operations</h4>
-                    <p>Romblon State University</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'togITher in the Future (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>togITher in the Future</h4>
-                    <p>PLM</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'PSECE 2023 (18th Semiconductor Convention) (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>PSECE 2023</h4>
-                    <p>Murata Electronics</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Data o Ako (2023)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Data o Ako</h4>
-                    <p>GDSC</p>
-                    <span class="cert-year">2023</span>
-                </div>
-
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Career Guidance Webinar (2022)')">
-                    <span class="cert-badge badge-local">Local</span>
-                    <h4>Career Guidance Webinar</h4>
-                    <p>AMA</p>
-                    <span class="cert-year">2022</span>
-                </div>
-            </div>
-
-            <div class="cert-column int-col">
-                <h3 class="col-title">International Certifications</h3>
-
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/4.png')" onclick="openModalImage('certificates/4.png', 'Are your s3crets safe? (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Are your s3crets safe?</h4>
-                    <p>GC Bitbarkada</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/2.png')" onclick="openModalImage('certificates/2.png', 'Cybersecurity in Healthcare (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Cybersecurity in Healthcare</h4>
-                    <p>DICT Region IX</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/8.png')" onclick="openModalImage('certificates/8.png', 'AI 101: Basics of AI (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AI 101: Basics of AI</h4>
-                    <p>DTI & SMERA</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/6.png')" onclick="openModalImage('certificates/6.png', 'AI in Education (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AI in Education</h4>
-                    <p>Ask Lex PH Academy</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/3.png')" onclick="openModalImage('certificates/3.png', 'AI-Powered Augmentation (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AI-Powered Augmentation</h4>
-                    <p>Eskwelabs</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/7.png')" onclick="openModalImage('certificates/7.png', 'AI Ready ASEAN Hour of Code (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AI Ready ASEAN Hour of Code</h4>
-                    <p>ASEAN Foundation</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/12.png')" onclick="openModalImage('certificates/12.png', 'Blockchain Unleashed (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Blockchain Unleashed</h4>
-                    <p>ZLL & DevCon</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/10.png')" onclick="openModalImage('certificates/10.png', 'Digital Literacy Seminar-Workshop (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Digital Literacy Workshop</h4>
-                    <p>PLM CISTM</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/5.png')" onclick="openModalImage('certificates/5.png', 'Be More Digi-TALINO (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Be More Digi-TALINO</h4>
-                    <p>Integrated OS</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/9.png')" onclick="openModalImage('certificates/9.png', 'Advanced Excel Functions (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Advanced Excel Functions</h4>
-                    <p>DTI Philippines</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="digital-edtech" data-aos="fade-up" style="--bg-img: url('certificates/1.png')" onclick="openModalImage('certificates/1.png', 'Pagtataya 2.0 (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Pagtataya 2.0</h4>
-                    <p>Sultan Kudarat State University</p>
-                    <span class="cert-year">2025</span>
-                </div>
-                <div class="training-item" data-category="research-career" data-aos="fade-up" style="--bg-img: url('certificates/11.png')" onclick="openModalImage('certificates/11.png', 'Infosession: Stardust and Stride (2025)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Infosession: Stardust and Stride</h4>
-                    <p>Google Developer Group</p>
-                    <span class="cert-year">2025</span>
-                </div>
-
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Cybersecurity Operations Unite to Tackle Cyber Threats (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Cybersecurity Operations Unite</h4>
-                    <p>Black Bear Securities</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cybersecurity" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'SecurITy Check: Empowering Knowledge (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>SecurITy Check: Empowering Knowledge</h4>
-                    <p>Luma</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Amazon Web Systems Cloud Training (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AWS Cloud Training</h4>
-                    <p>AWS</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'AWSome Day Online Conference (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>AWSome Day Online Conference</h4>
-                    <p>AWS</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="cloud-iot" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Packet Hacks 3-Day Hackathon (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Internet of Things Conference 2023</h4>
-                    <p>Packetworx</p>
-                    <span class="cert-year">2023</span>
-                </div>
-                <div class="training-item" data-category="programming" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'UI/UX 3-day Training Seminar (2023)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>UI/UX 3-day Training Seminar</h4>
-                    <p>Google</p>
-                    <span class="cert-year">2023</span>
-                </div>
-
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Intel Open-VINO Toolkit Training (2022)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Intel Open-VINO Toolkit Training</h4>
-                    <p>Intel</p>
-                    <span class="cert-year">2022</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'OpenVino DevCon Workshop Series (2022)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>OpenVino DevCon Workshop Series</h4>
-                    <p>Intel</p>
-                    <span class="cert-year">2022</span>
-                </div>
-                <div class="training-item" data-category="ai-ml" data-aos="fade-up" style="--bg-img: url('certificates/placeholder.png')" onclick="openModalImage('certificates/placeholder.png', 'Worldwide AI Webinar (2022)')">
-                    <span class="cert-badge badge-int">International</span>
-                    <h4>Worldwide AI Webinar</h4>
-                    <p>WOW AI</p>
-                    <span class="cert-year">2022</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="section-bg-dark">
-        <h2 data-aos="fade-up">Get in Touch</h2>
-        <div class="contact-professional" data-aos="fade-up">
-            
-            <div class="contact-details-grid">
-                <a href="https://www.linkedin.com/in/cedric-rivera-72bba0259/" target="_blank" class="contact-card-pro contact-link-card">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <span>Connect with me</span>
-                </a>
-                
-                <a href="https://github.com/Hiderima" target="_blank" class="contact-card-pro contact-link-card">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <span>View Projects</span>
-                </a>
-
-                <div class="contact-card-pro contact-action-card" onclick="copyToClipboard('cedricrivera2@gmail.com')">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>cedricrivera2@gmail.com</p>
-                    <small>Click to Copy</small>
-                </div>
-
-                <div class="contact-card-pro contact-action-card" onclick="copyToClipboard('+639764971865')">
-                    <i class="fas fa-phone"></i>
-                    <h3>Phone</h3>
-                    <p>+63 976 497 1865</p>
-                    <small>Click to Copy</small>
-                </div>
-                
-                <a href="https://maps.app.goo.gl/sFo5iB2Q319KFj7A6" target="_blank" class="contact-card-pro full-width contact-link-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Address</h3>
-                    <p>Pablo Ocampo Street, Malate, Manila, NCR (Zip Code 1004)</p>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p style="opacity: 0.7; font-size: 0.9rem;">© 2025 Cedric Elecho Rivera. All Rights Reserved.</p>
-    </footer>
-
-    <div id="modal" class="modal" role="dialog">
-        <div class="modal-content">
-            <span class="close">×</span>
-            <h3 id="modalTitle"></h3>
-            <p id="modalDesc"></p>
-        </div>
-    </div>
-
-    <div id="imageModal" class="modal" role="dialog" style="display:none;">
-        <div class="modal-content image-modal-content">
-            <span class="close-image">×</span>
-            <img id="modalImg" src="" alt="Certificate" style="width:100%; height:auto; border-radius:8px;">
-            <p id="modalImgDesc" style="margin-top:1rem; text-align:center; font-weight:600;"></p>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    .hero h1 { font-size: 3rem; }
+    .about-container { flex-direction: column; text-align: center; gap: 2rem; }
+    .hero { text-align: center; }
+    .cta-buttons { justify-content: center; }
+    .cert-split-layout { grid-template-columns: 1fr; }
+    .contact-details-grid { grid-template-columns: 1fr; }
+}
