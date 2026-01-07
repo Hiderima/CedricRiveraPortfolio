@@ -80,10 +80,10 @@ function copyToClipboard(text) {
 
 // --- PHOTO COLLAGE AUTO-ROTATION ---
 const images = [
-    'Rivera_barong.JPG',
-    'Rivera_creative.JPG',
-    'Rivera_formal.JPG',
-    'Rivera_unif.JPG',
+    'Rivera_barong.jpg',
+    'Rivera_creative.jpg',
+    'Rivera_formal.jpg',
+    'Rivera_unif.jpg',
     'Rivera_WithLaptop.png'
 ];
 let currentIndex = 4; // Start with Laptop image (index 4)
@@ -245,3 +245,4 @@ filterButtons.forEach(btn => {
     });
 
 });
+
